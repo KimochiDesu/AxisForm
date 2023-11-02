@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Form with Image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('bg.png'); /* Set background image to 'bg.png' */
+            background-size: 10%; /* Adjust background image size */
+            background-color: aqua;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            position: relative; /* Add position relative to the container */
+        }
+        #imageContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 40%; /* Maximum width of the image container */
+            margin: 0 auto;
+            position: relative; /* Add position relative */
+        }
+        #formImage {
+            max-width: 75%; /* Limit image width to the container size */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .userTextBox {
+            position: absolute;
+            font-size: 24px;
+            color: rgb(0, 0, 0);
+        }
+        #userText1 {
+            top: 43%;
+            left: 58%;
+            transform: translate(-50%, -50%);
+        }
+        #userText2 {
+            top: 49%; /* Adjust vertical position for the second text box */
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #userText3 {
+            top: 49%;
+            left: 71%;
+            transform: translate(-50%, -50%);
+        }
+        #userText4 {
+            top: 55%; /* Adjust vertical position for the second text box */
+            left: 56%;
+            transform: translate(-50%, -50%);
+        }
+        #userText5 {
+            top: 61%;
+            left: 57%;
+            transform: translate(-50%, -50%);
+        }
+        #userText6 {
+            top: 67%; /* Adjust vertical position for the second text box */
+            left: 57%;
+            transform: translate(-50%, -50%);
+        }
+        #userText7 {
+            top: 85%; /* Adjust vertical position for the second text box */
+            left: 60%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="imageContainer">
+            <img id="formImage" src="form.jpeg" alt="Application Form Image">
+            <div id="userText1" class="userTextBox" contenteditable="true">Name</div>
+            <div id="userText2" class="userTextBox" contenteditable="true">Gender</div>
+            <div id="userText3" class="userTextBox" contenteditable="true">Age</div>
+            <div id="userText4" class="userTextBox" contenteditable="true">Contact Details</div>
+            <div id="userText5" class="userTextBox" contenteditable="true">Profession</div>
+            <div id="userText6" class="userTextBox" contenteditable="true">Recruited By</div>
+            <div id="userText7" class="userTextBox" contenteditable="true">Signature</div>
+        </div>
+    </div>
+</body>
+</html>
