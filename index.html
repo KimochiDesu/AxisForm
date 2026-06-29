@@ -2,134 +2,324 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Axis Cult Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis Cult Membership Form</title>
     <link rel="icon" type="image/png" href="bg.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-image: url('bg.png'); /* Set background image to 'bg.png' */
-            background-size: 10%; /* Adjust background image size */
-            background-color: aqua;
+            font-family: 'Crimson Text', Georgia, serif;
+            background-color: #00e5ff;
+            background-image: url('bg.png');
+            background-size: 8%;
+            background-repeat: repeat;
+            min-height: 100vh;
+            color: #003344;
         }
-        .container {
+
+        header {
             text-align: center;
-            margin-top: 50px;
-            position: relative; /* Add position relative to the container */
+            padding: 24px 20px 16px;
+            background: linear-gradient(180deg, rgba(0,180,220,0.6) 0%, transparent 100%);
         }
-        #imageContainer {
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 4vw, 2.8rem);
+            color: #fff;
+            text-shadow:
+                -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000,
+                0 0 24px rgba(0,200,255,0.9), 0 0 8px rgba(0,200,255,0.6);
+            letter-spacing: 0.06em;
+        }
+        header p {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-top: 4px;
+            font-style: italic;
+            font-weight: 600;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .layout {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 40%; /* Maximum width of the image container */
+            gap: 20px;
+            max-width: 1300px;
             margin: 0 auto;
-            position: relative; /* Add position relative */
+            padding: 16px 20px 40px;
+            align-items: flex-start;
         }
+
+        /* Sidebar panels */
+        .sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .panel {
+            background: linear-gradient(135deg, rgba(0,170,200,0.96) 0%, rgba(0,130,170,0.98) 100%);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 4px 20px rgba(0,150,200,0.35), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        .panel h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            color: #b0e8ff;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(0,60,90,0.25);
+            padding-bottom: 8px;
+        }
+        .panel p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #b0e8ff;
+            margin-bottom: 8px;
+        }
+        .panel p:last-child { margin-bottom: 0; }
+        .panel a {
+            color: #004d70;
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 600;
+        }
+        .panel a:hover { text-decoration: underline; color: #006699; }
+
+        .panel.prayer {
+            font-style: italic;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: #b0e8ff;
+        }
+        .panel.prayer::-webkit-scrollbar { width: 4px; }
+        .panel.prayer::-webkit-scrollbar-track { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        .panel.prayer::-webkit-scrollbar-thumb { background: rgba(0,100,150,0.4); border-radius: 4px; }
+
+        /* Main form area */
+        .form-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        #imageContainer {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+            box-shadow: 0 8px 40px rgba(0,150,200,0.5), 0 0 0 3px rgba(0,220,255,0.5);
+            border-radius: 4px;
+            overflow: visible;
+        }
+
         #formImage {
-            max-width: 75%; /* Limit image width to the container size */
-            height: auto; /* Maintain aspect ratio */
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
         }
+
         .userTextBox {
             position: absolute;
-            font-size: 24px;
-            color: rgb(0, 0, 0);
+            font-family: 'Caveat', cursive;
+            font-size: clamp(15px, 2vw, 26px);
+            color: #1a0a00;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: text;
+            white-space: nowrap;
+            min-width: 60px;
+            transition: background 0.15s;
+            padding: 1px 3px;
+            border-radius: 2px;
         }
-        #userText1 {
-            top: 43%;
-            left: 58%;
-            transform: translate(-50%, -50%);
+        .userTextBox:focus {
+            background: rgba(255,248,200,0.7);
+            outline: 1px dashed rgba(180,120,0,0.6);
         }
-        #userText2 {
-            top: 49%; /* Adjust vertical position for the second text box */
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .userTextBox.empty::before {
+            content: attr(data-placeholder);
+            color: rgba(80,40,0,0.4);
+            pointer-events: none;
+            font-style: italic;
         }
-        #userText3 {
-            top: 49%;
-            left: 71%;
-            transform: translate(-50%, -50%);
+        .userTextBox:not(.empty) {
+            text-shadow: 0 0 4px rgba(255,255,255,0.8), 0 1px 2px rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.25);
         }
-        #userText4 {
-            top: 55%; /* Adjust vertical position for the second text box */
-            left: 58%;
-            transform: translate(-50%, -50%);
+        .capturing-mode .userTextBox {
+            background: transparent !important;
+            outline: none !important;
         }
-        #userText5 {
-            top: 61%;
-            left: 57%;
-            transform: translate(-50%, -50%);
+
+        #userText1 { top: 43%; left: 58%; transform: translate(-50%, -50%); }
+        #userText2 { top: 49%; left: 50%; transform: translate(-50%, -50%); }
+        #userText3 { top: 49%; left: 71%; transform: translate(-50%, -50%); }
+        #userText4 { top: 55%; left: 58%; transform: translate(-50%, -50%); }
+        #userText5 { top: 61%; left: 57%; transform: translate(-50%, -50%); }
+        #userText6 { top: 67%; left: 57%; transform: translate(-50%, -50%); }
+        #userText7 { top: 85%; left: 60%; transform: translate(-50%, -50%); font-style: italic; font-size: clamp(16px, 2.2vw, 30px); font-weight: 700; }
+
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        #userText6 {
-            top: 67%; /* Adjust vertical position for the second text box */
-            left: 57%;
-            transform: translate(-50%, -50%);
+
+        .btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 7px;
         }
-        #userText7 {
-            top: 85%; /* Adjust vertical position for the second text box */
-            left: 60%;
-            transform: translate(-50%, -50%);
+        .btn-primary {
+            background: linear-gradient(135deg, #0090b8, #00d4f0);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(0,180,220,0.5);
         }
-        .placeholder.right {
-            position: absolute;
-            right: 10px; /* Adjust the position from the right side */
-            top: 10px; /* Adjust the position from the top */
-            width: 300px;
-            background-color: rgba(255, 255, 255, 0.75); /* White background with 75% opacity */
-            padding: 20px;
+        .btn-primary:hover { background: linear-gradient(135deg, #00a8d8, #00eeff); box-shadow: 0 4px 16px rgba(0,200,240,0.7); transform: translateY(-1px); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.35);
+            color: #003344;
+            border: 1px solid rgba(0,180,220,0.5);
+            font-weight: 600;
         }
-        .placeholder.left {
-            position: absolute;
-            left: 10px; /* Adjust the position from the left side */
-            top: 10px; /* Adjust the position from the top */
-            width: 300px;
-            background-color: rgba(255, 255, 255, 0.75); /* White background with 75% opacity */
-            padding: 20px;
+        .btn-secondary:hover { background: rgba(255,255,255,0.55); border-color: rgba(0,200,240,0.8); transform: translateY(-1px); }
+
+@media (max-width: 900px) {
+            .layout { flex-direction: column; align-items: center; }
+            .sidebar { width: 100%; max-width: 560px; flex-direction: row; flex-wrap: wrap; }
+            .panel { flex: 1; min-width: 240px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div id="imageContainer">
-            <img id="formImage" src="form.jpeg" alt="Application Form Image">
-            <div id="userText1" class="userTextBox" contenteditable="true">Name</div>
-            <div id="userText2" class="userTextBox" contenteditable="true">Gender</div>
-            <div id="userText3" class="userTextBox" contenteditable="true">Age</div>
-            <div id="userText4" class="userTextBox" contenteditable="true">Contact Details</div>
-            <div id="userText5" class="userTextBox" contenteditable="true">Profession</div>
-            <div id="userText6" class="userTextBox" contenteditable="true">Recruited By</div>
-            <div id="userText7" class="userTextBox" contenteditable="true">Signature</div>
-        </div>
-        <div class="placeholder left">
-            <p>PRAISE AQUA!</p>
-            <p>Dear Future Axist Cult Member!</p>
-            <p>To solidify your membership, you should register thyself with this form.
-                This form represents your membership that says that you worship no one 
-                but our great goddess, Aqua-sama~
-            </p>
-            <p>Discord: kimochiuwu</p>
-            <p>Discord Server: <a href="https://discord.gg/WsXZD2ZQQF">https://discord.gg/WsXZD2ZQQF</a></p>
-        </div>
-        <div class="placeholder right">
-            <p>PRAISE AQUA!</p>
-            <p>O Aqua, serene deity of the flowing streams and tranquil seas,
-                We beseech thee, ruler of the tides and bearer of life's essence.
-                
+    <header>
+        <h1>⚜ Axis Cult Membership Form ⚜</h1>
+        <p>Praise Aqua-sama! Fill in your details below.</p>
+    </header>
+
+    <div class="layout">
+        <!-- Left sidebar -->
+        <aside class="sidebar">
+            <div class="panel">
+                <h2>Welcome, Future Axist!</h2>
+                <p>Praise Aqua!</p>
+                <p>Dear Future Axis Cult Member, to solidify your membership you must register thyself with this sacred form.</p>
+                <p>This form declares that you worship no one but our great goddess, <strong style="color:#003a55">Aqua-sama~</strong></p>
+                <p>Discord: <strong>iamkimocheese</strong></p>
+                <p>Server: <a href="https://discord.gg/Rzz76pfmAu" target="_blank" rel="noopener">discord.gg/Rzz76pfmAu</a></p>
+            </div>
+        </aside>
+
+        <!-- Centre: form image -->
+        <main class="form-area">
+            <div id="imageContainer">
+                <img id="formImage" src="form.jpeg" alt="Axis Cult Membership Application Form">
+                <div id="userText1" class="userTextBox empty" contenteditable="true" data-placeholder="Your Name"></div>
+                <div id="userText2" class="userTextBox empty" contenteditable="true" data-placeholder="Gender"></div>
+                <div id="userText3" class="userTextBox empty" contenteditable="true" data-placeholder="Age"></div>
+                <div id="userText4" class="userTextBox empty" contenteditable="true" data-placeholder="Contact Details"></div>
+                <div id="userText5" class="userTextBox empty" contenteditable="true" data-placeholder="Profession"></div>
+                <div id="userText6" class="userTextBox empty" contenteditable="true" data-placeholder="Recruited By"></div>
+                <div id="userText7" class="userTextBox empty" contenteditable="true" data-placeholder="Signature"></div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-primary" onclick="downloadImage()">
+                    ⬇ Download Image
+                </button>
+                <button class="btn btn-secondary" onclick="resetForm()">
+                    ↺ Reset Form
+                </button>
+            </div>
+        </main>
+
+        <!-- Right sidebar -->
+        <aside class="sidebar">
+            <div class="panel prayer">
+                <h2>A Prayer to Aqua</h2>
+                O Aqua, serene deity of the flowing streams and tranquil seas,
+                we beseech thee, ruler of the tides and bearer of life's essence.
+                <br><br>
                 In your vast and shimmering realm, you bestow the gift of purity,
-                Washing away impurities and nurturing all that dwells within.
-                
-                Your gentle touch brings forth the dance of droplets, a melody of life,
-                A symphony that whispers of renewal, healing, and boundless vitality.
-                
+                washing away impurities and nurturing all that dwells within.
+                <br><br>
+                Your gentle touch brings forth the dance of droplets, a melody of life —
+                a symphony that whispers of renewal, healing, and boundless vitality.
+                <br><br>
                 May your waters cleanse our spirits and grant us clarity of mind,
-                As we honor your presence in the shimmering waves and the quiet depths.
-                
+                as we honor your presence in the shimmering waves and the quiet depths.
+                <br><br>
                 We offer our gratitude for the sustenance you provide,
-                For the lakes, rivers, and oceans that sustain life's wondrous tapestry.
-                
-                Bless us with your grace, O Aqua, and keep us in your eternal embrace,
-                Guide us through the ebb and flow of existence, as we cherish your divine essence.</p>
-        </div>
+                for the lakes, rivers, and oceans that sustain life's wondrous tapestry.
+                <br><br>
+                Bless us with your grace, O Aqua, and keep us in your eternal embrace.
+                Guide us through the ebb and flow of existence, as we cherish your divine essence.
+            </div>
+        </aside>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        const fields = document.querySelectorAll('.userTextBox');
+
+        fields.forEach(el => {
+            el.addEventListener('focus', () => el.classList.remove('empty'));
+            el.addEventListener('blur', () => {
+                if (!el.textContent.trim()) el.classList.add('empty');
+            });
+            el.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+            });
+        });
+
+        function resetForm() {
+            fields.forEach(el => {
+                el.textContent = '';
+                el.classList.add('empty');
+            });
+        }
+
+        async function downloadImage() {
+            document.activeElement.blur();
+
+            const container = document.getElementById('imageContainer');
+            container.classList.add('capturing-mode');
+
+            const canvas = await html2canvas(container, {
+                useCORS: true,
+                scale: 2,
+                backgroundColor: null,
+                logging: false,
+                ignoreElements: el => el.classList.contains('empty')
+            });
+
+            container.classList.remove('capturing-mode');
+
+            const link = document.createElement('a');
+            link.download = 'axis-cult-membership.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
 </body>
 </html>
